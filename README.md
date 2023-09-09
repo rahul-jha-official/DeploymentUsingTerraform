@@ -89,3 +89,14 @@ The terraform.tfstate file will be containing current state, version, terraform 
 
 # Terraform State
 While working locally a state file is generated. While working among a team we do not need separate state file thus we need to centralize the state file and also lock the state file when one is working on the terraform changes.
+
+We can use azure storage container to store state file. For that we can create terraform backend.
+
+    terraform {
+      backend "azurerm" {
+        resource_group_name = "RESOURCE_GROUP_NAME"
+        storage_account_name = "STORAGE_ACCOUNT_NAME"
+        container_name = "CONTAINER_NAME"
+        key = "terraform.tfstate"
+      }
+    }
