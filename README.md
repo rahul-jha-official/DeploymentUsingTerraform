@@ -76,3 +76,16 @@ Create a different file for Output variables.
     output "VARIABLE_NAME" {
       value = resource_name.thing_to_be_fetched
     }
+
+# Terraform Execution Plan
+**What heappens when we run terraform plan ?**</br>
+When we run the following command, the plan file is compared with state file "terraform.tfstate". Initially plan file is not visible. To see the file we have to output that file. To output the file:
+
+    terraform plan -out "plan_file_name"
+
+After comparision the changes are listed.
+
+The terraform.tfstate file will be containing current state, version, terraform version, output variables, resource configuration etc.
+
+# Terraform State
+While working locally a state file is generated. While working among a team we do not need separate state file thus we need to centralize the state file and also lock the state file when one is working on the terraform changes.
