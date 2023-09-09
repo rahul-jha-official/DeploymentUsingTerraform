@@ -41,5 +41,38 @@ Terraform has gained widespread popularity in the DevOps and infrastructure auto
 ![image](https://github.com/rahul-jha-official/DeploymentUsingTerraform/assets/138975150/092c1d11-f830-473c-a8ed-63dee0b11656)
 
 
+**Terraform Variables**</br>
+Create a separate file for variables. By convention we can name "variables.tf"
+> Syntax for declaring & Initializing a variable</br>
 
+    variable "VARIABLE_NAME" {
+      default     = "VARIABLE_VALUE"
+      type        = "TYPE_OF_VARIABLE"
+      description = "DESCRIPTION_FOR_VARIABLE"
+    }
 
+> Syntax for using variable</br>
+  
+    var.VARIABLE_NAME
+
+**Overriding variables** </br>
+> Declare a variable in variables.tf file
+
+    variable "VARIABLE_NAME" {
+      type        = "TYPE_OF_VARIABLE"
+      description = "DESCRIPTION_FOR_VARIABLE"
+    }
+> Create a separate file for overriding a variable "terraform.tfvars"
+
+    VARIABLE_NAME = "VARIABLE_VALUE"
+
+**Output variables** </br>
+Output variables are those whose value we can get after resource has been deployed. For example: Resource ID. 
+
+Create a different file for Output variables.
+
+> Syntax for output variable
+    
+    output "VARIABLE_NAME" {
+      value = resource_name.thing_to_be_fetched
+    }
