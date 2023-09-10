@@ -1,0 +1,5 @@
+resource_group_name = "akv-rg"
+resource_group_location = "eastus"
+keyvault_name = "myakv"
+keyvault_secret_key = "db-name"
+keyvault_secret_value = "Book-Store"
