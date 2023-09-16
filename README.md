@@ -100,3 +100,59 @@ We can use azure storage container to store state file. For that we can create t
         key = "terraform.tfstate"
       }
     }
+
+# Variables
+Variables in Terraform are a great way to define centrally controlled reusable values. The information in Terraform variables is saved independently from the deployment plans, which makes the values easy to read and edit from a single file. </br>
+
+**Types of Variable**</br>
+- Input variables
+- Output variables
+- Local variables </br>
+
+**Input variables**</br>
+[Input variables](https://developer.hashicorp.com/terraform/language/values/variables) are usually defined by stating a name, type and default value. However, the type and default values are not strictly necessary. Terraform can deduct the type of the variable from the default or input value.</br>
+
+Variables can be predetermined in a file or included in the command-line options. As such, the simplest variable is just a name while the type and value are selected based on the input.
+
+> variable "variable_name" {}
+
+> terraform apply -var variable_name="value"
+
+**Types of Input Variables**
+- number
+- bool
+- string
+- map
+- list
+- object
+
+**Arguments**</br>
+Terraform CLI defines the following optional arguments for variable declarations:
+- default - A default value which then makes the variable optional.
+- type - This argument specifies what value types are accepted for the variable.
+- description - This specifies the input variable's documentation.
+- validation - A block to define validation rules, usually in addition to type constraints.
+- sensitive - Limits Terraform UI output when the variable is used in configuration.
+- nullable - Specify if the variable can be null within the module.
+
+      variable "StringVar" {
+        default = "Hello"
+        type = string
+        sensitive = false
+        description = "This is of type string"    
+        validation {
+          condition = length(var.StringVar) > 3 && substr(var.StringVar,0,0) == "rg-"
+          #condition = can(regex("^rg-",var.StringVar))
+          error_message = "The condition fails"
+        }
+      }
+
+**Output Variables**</br>
+Output variables provide a convenient way to get useful information about your infrastructure. As you might have noticed, much of the server details are calculated at deployment and only become available afterwards. Using output variables you can extract any server-specific values including the calculated details.
+
+Configuring output variables is really quite simple. All you need to do is define a name for the output and what value it should represent. For example, you could have Terraform show your server’s IP address after deployment with the output variable below.
+
+      output "public_ip" {
+        value = upcloud_server.server_name.network_interface[0].ip_address
+      }
+
