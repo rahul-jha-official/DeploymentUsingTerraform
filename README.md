@@ -38,7 +38,7 @@ Terraform has gained widespread popularity in the DevOps and infrastructure auto
 
 
 # Terraform Commands
-![image](https://github.com/rahul-jha-official/DeploymentUsingTerraform/assets/138975150/092c1d11-f830-473c-a8ed-63dee0b11656)
+![image](https://github.com/rahul-jha-official/DeploymentUsingTerraform/assets/138975150/6a4aabe9-8c81-4706-98f6-2ffed510e699)
 
 
 **Terraform Variables**</br>
